@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "dev": "ng serve",
-    "build": "ng build"
+    "build": "ng build",
+    "install": "npm install --force"
   },
   "dependencies": {
     "@angular/animations": "^18.1.0",
