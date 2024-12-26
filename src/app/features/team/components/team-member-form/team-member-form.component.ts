@@ -9,7 +9,7 @@ import { TeamMember } from '../../models/team-member.model';
   imports: [CommonModule, ReactiveFormsModule],
   template: `
     <form [formGroup]="memberForm" (ngSubmit)="onSubmit()" class="member-form">
-      <h3>{{ editMode ? 'Modifier' : 'Ajouter' }} un membre</h3>
+      <h3 class="form-title">{{ editMode ? 'Modifier' : 'Ajouter' }} un membre</h3>
       
       <div class="photo-upload">
         <img [src]="previewUrl || member?.avatar || 'assets/default-avatar.png'" 
@@ -17,8 +17,7 @@ import { TeamMember } from '../../models/team-member.model';
              class="avatar-preview">
         <div class="upload-controls">
           <label for="avatar" class="upload-btn">
-            <i class="fas fa-camera"></i>
-            Changer la photo
+            <i class="fas fa-camera"></i> Changer la photo
           </label>
           <input type="file" 
                  id="avatar" 
@@ -110,10 +109,19 @@ import { TeamMember } from '../../models/team-member.model';
   `,
   styles: [`
     .member-form {
-      background: white;
+      background: #f9f9f9;
       padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
 
     .photo-upload {
@@ -122,40 +130,37 @@ import { TeamMember } from '../../models/team-member.model';
     }
 
     .avatar-preview {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
-      border: 3px solid #f5f5f5;
+      border: 3px solid #e3e3e3;
+      transition: transform 0.3s ease;
     }
 
-    .upload-controls {
-      display: flex;
-      justify-content: center;
+    .avatar-preview:hover {
+      transform: scale(1.05);
     }
 
     .upload-btn {
-      background: #3498db;
+      background: #2980b9;
       color: white;
       padding: 0.5rem 1rem;
-      border-radius: 4px;
+      border-radius: 8px;
+      font-size: 0.9rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: background-color 0.3s;
+      transition: background 0.3s ease;
     }
 
     .upload-btn:hover {
-      background: #2980b9;
+      background: #21618c;
     }
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
     }
 
     .form-group {
@@ -165,25 +170,27 @@ import { TeamMember } from '../../models/team-member.model';
 
     label {
       margin-bottom: 0.5rem;
-      color: #666;
+      font-weight: 600;
+      color: #34495e;
     }
 
     .form-control {
       padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
       font-size: 1rem;
-      transition: border-color 0.3s;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .form-control:focus {
       outline: none;
       border-color: #3498db;
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
     }
 
     .error-message {
       color: #e74c3c;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       margin-top: 0.25rem;
     }
 
@@ -191,32 +198,33 @@ import { TeamMember } from '../../models/team-member.model';
       display: flex;
       gap: 1rem;
       justify-content: flex-end;
-    }
-
-    button {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s;
+      margin-top: 1.5rem;
     }
 
     .btn-cancel {
-      background: #e0e0e0;
+      background: #bdc3c7;
+      color: #2c3e50;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .btn-cancel:hover {
-      background: #bdc3c7;
+      background: #95a5a6;
     }
 
     .btn-submit {
-      background: #3498db;
+      background: #27ae60;
       color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .btn-submit:hover {
-      background: #2980b9;
+      background: #1e8449;
     }
 
     .btn-submit:disabled {
@@ -286,3 +294,4 @@ export class TeamMemberFormComponent {
     this.cancel.emit();
   }
 }
+
