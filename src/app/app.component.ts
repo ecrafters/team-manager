@@ -29,7 +29,7 @@ import { Observable } from 'rxjs';
       transition: margin-right 0.3s ease;
     }
     .main-content.with-sidebar {
-      margin-right: 250px;
+      margin-left: 250px;
     }
   `]
 })

@@ -75,7 +75,194 @@ import { TeamMember } from '../models/team-member.model';
       </div>
     </div>
   `,
-  styles: [/* ... existing styles ... */]
+  styles: [`
+    .team-page {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 1rem;
+      background: #f5f7fa;
+      min-height: 100vh;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #34495e;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #7f8c8d;
+      font-size: 1rem;
+    }
+
+    .btn-add {
+      background: #27ae60;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-add:hover {
+      background: #1e8449;
+    }
+
+    .content-grid {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .main-content {
+      flex: 3;
+    }
+
+    .side-content {
+      flex: 1;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .member-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .member-actions {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-icon {
+      background: #ecf0f1;
+      border: none;
+      border-radius: 50%;
+      padding: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-icon:hover {
+      background: #bdc3c7;
+    }
+
+    .btn-icon.delete {
+      background: #e74c3c;
+      color: white;
+    }
+
+    .btn-icon.delete:hover {
+      background: #c0392b;
+    }
+
+    .member-avatar {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #f5f7fa;
+    }
+
+    .member-info {
+      text-align: center;
+    }
+
+    .member-info h3 {
+      margin: 0.5rem 0;
+      font-size: 1.25rem;
+      color: #2c3e50;
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: white;
+      text-transform: capitalize;
+    }
+
+    .role-badge.developer {
+      background: #3498db;
+    }
+
+    .role-badge.manager {
+      background: #9b59b6;
+    }
+
+    .role-badge.admin {
+      background: #e67e22;
+    }
+
+    .department, .email, .phone {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.25rem 0;
+    }
+
+    .department i, .email i, .phone i {
+      color: #bdc3c7;
+    }
+
+    @media (max-width: 768px) {
+      .content-grid {
+        flex-direction: column;
+      }
+    }
+  `]
 })
 export class TeamComponent implements OnInit {
   showForm = false;

@@ -101,7 +101,7 @@ import { Observable, map } from 'rxjs';
       display: flex;
       flex-direction: column;
       position: fixed;
-      right: 0;
+      left: 0;
       top: 0;
       z-index: 1000;
       box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
