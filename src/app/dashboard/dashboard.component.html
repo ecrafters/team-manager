@@ -1,0 +1,24 @@
+
+<div class="dashboard">
+  <header class="dashboard-header">
+    <h1>Tableau de bord</h1>
+    <p class="subtitle">Vue d'ensemble de l'activité</p>
+  </header>
+  
+  <app-dashboard-filters
+    (filtersChange)="onFiltersChange($event)"
+  ></app-dashboard-filters>
+
+  <app-dashboard-stats [stats]="viewModel.stats"></app-dashboard-stats>
+
+  <div class="analytics-grid">
+    <div class="analytics-column">
+      <app-project-analytics [stats]="viewModel.projectStats"></app-project-analytics>
+      <app-member-workload [members]="viewModel.memberWorkloads"></app-member-workload>
+    </div>
+    <div class="analytics-column">
+      <app-team-analytics [stats]="viewModel.teamStats"></app-team-analytics>
+      <app-absence-analytics [stats]="viewModel.absenceStats"></app-absence-analytics>
+    </div>
+  </div>
+</div>

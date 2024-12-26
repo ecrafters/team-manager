@@ -1,0 +1,72 @@
+```html
+<div class="filters-panel">
+  <form [formGroup]="filterForm" class="filters-form">
+    <div class="date-filters">
+      <div class="form-group">
+        <label for="startDate">Date de début</label>
+        <input 
+          type="date" 
+          id="startDate" 
+          formControlName="startDate" 
+          class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="endDate">Date de fin</label>
+        <input 
+          type="date" 
+          id="endDate" 
+          formControlName="endDate" 
+          class="form-control">
+      </div>
+    </div>
+
+    <div class="filters-grid">
+      <div class="form-group">
+        <label for="department">Département</label>
+        <select id="department" formControlName="department" class="form-control">
+          <option value="">Tous les départements</option>
+          <option value="tech">Technique</option>
+          <option value="design">Design</option>
+          <option value="marketing">Marketing</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="projectStatus">Statut des projets</label>
+        <select id="projectStatus" formControlName="projectStatus" class="form-control">
+          <option value="">Tous les statuts</option>
+          <option value="active">Actif</option>
+          <option value="completed">Terminé</option>
+          <option value="on-hold">En pause</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="memberWorkload">Charge de travail</label>
+        <select id="memberWorkload" formControlName="memberWorkload" class="form-control">
+          <option value="all">Toutes les charges</option>
+          <option value="overloaded">Surcharge</option>
+          <option value="optimal">Optimale</option>
+          <option value="underloaded">Sous-charge</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="absenceType">Type d'absence</label>
+        <select id="absenceType" formControlName="absenceType" class="form-control">
+          <option value="">Tous les types</option>
+          <option value="vacation">Congés</option>
+          <option value="sick">Maladie</option>
+          <option value="remote">Télétravail</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filters-actions">
+      <button type="button" class="btn-reset" (click)="resetFilters()">
+        <i class="fas fa-undo"></i> Réinitialiser
+      </button>
+    </div>
+  </form>
+</div>
+```
