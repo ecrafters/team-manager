@@ -44,114 +44,127 @@ import { MemberService } from '../../services/member.service';
       <p *ngIf="absence.reason" class="reason">{{ absence.reason }}</p>
     </div>
   `,
-  styles: [`
-    .absence-item {
-      background: white;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+ styles: [`
+  .absence-item {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
 
-    .absence-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
+  .absence-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
 
-    .member-info {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      background: #f8f9fa;
-      border-radius: 4px;
-    }
+  .absence-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
 
-    .member-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+  .type-badge {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-    .member-name {
-      font-weight: 500;
-      color: #2c3e50;
-    }
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+  }
 
-    .type-badge {
-      background: #e3f2fd;
-      color: #2196f3;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.875rem;
-    }
+  .btn-icon {
+    background: #f1f3f5;
+    border: none;
+    border-radius: 50%;
+    color: #555;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+  }
 
-    .actions {
-      display: flex;
-      gap: 0.5rem;
-    }
+  .btn-icon:hover {
+    background: #e2e6ea;
+    color: #000;
+  }
 
-    .btn-icon {
-      background: none;
-      border: none;
-      color: #666;
-      cursor: pointer;
-      padding: 0.25rem;
-      transition: color 0.3s;
-    }
+  .member-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f9fafb;
+    border-radius: 8px;
+  }
 
-    .btn-icon:hover {
-      color: #333;
-    }
+  .member-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+  }
 
-    .absence-dates {
-      margin-bottom: 1rem;
-    }
+  .member-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+  }
 
-    .date {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.25rem;
-    }
+  .absence-dates {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: #666;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 
-    .label {
-      color: #666;
-      font-weight: 500;
-    }
+  .status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: 1rem;
+  }
 
-    .status-badge {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-    }
+  .pending .status-badge {
+    background: #fff3e0;
+    color: #ef6c00;
+  }
 
-    .reason {
-      color: #666;
-      font-size: 0.875rem;
-      font-style: italic;
-    }
+  .approved .status-badge {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
 
-    /* Status styles */
-    .pending .status-badge {
-      background: #fff3e0;
-      color: #f57c00;
-    }
+  .rejected .status-badge {
+    background: #ffebee;
+    color: #c62828;
+  }
 
-    .approved .status-badge {
-      background: #e8f5e9;
-      color: #2e7d32;
-    }
+  .reason {
+    margin-top: 1rem;
+    color: #555;
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+`]
 
-    .rejected .status-badge {
-      background: #ffebee;
-      color: #c62828;
-    }
-  `]
 })
 export class AbsenceItemComponent {
   @Input() absence!: Absence;

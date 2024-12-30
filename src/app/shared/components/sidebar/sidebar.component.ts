@@ -41,12 +41,14 @@ import { Observable, map } from 'rxjs';
               <span>Absences</span>
             </a>
           </li>
+         <!-- TODO
           <li *ngIf="isManager$ | async">
             <a routerLink="/absences/validation" routerLinkActive="active">
               <i class="fas fa-check-circle"></i>
               <span>Validation des absences</span>
             </a>
           </li>
+          -->
           <li>
             <a routerLink="/workload" routerLinkActive="active">
               <i class="fas fa-tasks"></i>
@@ -105,7 +107,27 @@ import { Observable, map } from 'rxjs';
       top: 0;
       z-index: 1000;
       box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 3s ease;
     }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          position: absolute;
+          transform: translateX(-100%);
+          z-index: 1000;
+        }
+        .main-content.with-sidebar {
+          margin-left: 0;
+        }
+      }
+
+      .sidebar-open .sidebar {
+        transform: translateX(0);
+      }
+
+      .sidebar-open .main-content {
+        margin-left: 250px;
+      }
 
     .sidebar-header {
       padding: 1.5rem;
@@ -322,7 +344,16 @@ export class SidebarComponent {
         const roles = {
           admin: 'Administrateur',
           manager: 'Manager',
-          developer: 'Développeur'
+          developer: 'Développeur',
+          crafters: 'Artisans',
+          quickwins: 'Quick Wins',
+          onboard: 'Onboard',
+          marketing: 'Marketing',
+          tester: 'Testeur',
+          devops: 'DevOps',
+          commercial: 'Commercial',
+          accounting: 'Comptabilité',
+          rh: 'Ressources Humaines'
         };
         return user ? roles[user.role] : '';
       })

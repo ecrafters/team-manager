@@ -3,7 +3,7 @@ export interface UserProfile {
   firstName: string;
   lastName: string;
   email: string;
-  role: 'admin' | 'manager' | 'developer';
+  role: 'admin' | 'manager' | 'developer' | 'crafters' | 'quickwins' | 'onboard';
   avatar?: string;
   phone?: string;
   department?: string;

@@ -18,14 +18,16 @@ import { Observable, map } from 'rxjs';
         <div class="header-content">
           <h1>Gestion des absences</h1>
           <div class="header-actions">
+           <!-- TODO 
             <a 
               *ngIf="isManager$ | async"
               routerLink="/absences/validation" 
               class="btn-validate"
+              isActive="false"
             >
               <i class="fas fa-check-circle"></i>
               Valider les absences
-            </a>
+            </a> -->
             <button class="btn-add" (click)="showForm = true" *ngIf="!showForm">
               <i class="fas fa-plus"></i> Nouvelle absence
             </button>
@@ -54,43 +56,111 @@ import { Observable, map } from 'rxjs';
   `,
   styles: [`
     .absences-page {
-      padding: 1.5rem;
+      padding: 2rem;
+      background: #f9fafb;
+      min-height: 100vh;
     }
+  
     .header-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin: 2rem 2rem;
+      width: 100%
     }
+  
+    h1 {
+      font-size: 2rem;
+      color: #2c3e50;
+      font-weight: bold;
+      margin-right: 15px;
+    }
+  
     .header-actions {
       display: flex;
       gap: 1rem;
     }
+  
     .btn-validate {
       background: #27ae60;
-      color: white;
+      color: #ffffff;
       text-decoration: none;
       padding: 0.75rem 1.5rem;
-      border-radius: 4px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      transition: background-color 0.3s;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s, box-shadow 0.3s;
     }
+  
     .btn-validate:hover {
       background: #219a52;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
+  
+    .btn-add {
+      background: #3498db;
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s, transform 0.2s;
+    }
+  
+    .btn-add:hover {
+      background: #2980b9;
+      transform: scale(1.05);
+    }
+  
     .content-grid {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 2fr 1fr;
       gap: 2rem;
     }
+  
     @media (max-width: 1024px) {
       .content-grid {
         grid-template-columns: 1fr;
       }
     }
+  
+    .main-content {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    .side-content {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      animation: slideIn 0.3s ease-out;
+    }
+  
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
   `]
-})
+  })
 export class AbsencesComponent implements OnInit {
   absences: Absence[] = [];
   showForm = false;

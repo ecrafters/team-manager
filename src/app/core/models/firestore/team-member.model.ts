@@ -3,7 +3,7 @@ export interface TeamMember {
   firstName: string;
   lastName: string;
   email: string;
-  role: 'admin' | 'manager' | 'developer';
+  role: 'admin' | 'manager' | 'developer' | 'tester' | 'marketing' | 'devops' | 'commercial' | 'accounting' | 'rh';
   department?: string;
   phone?: string;
   avatar?: string;

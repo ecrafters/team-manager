@@ -45,49 +45,70 @@ import { MemberService } from '../../services/member.service';
   `,
   styles: [`
     .absence-list {
-      padding: 1rem;
+      padding: 2rem;
+      background-color: #f5f7fa;
     }
-
+  
     .absences-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
-
+  
     .absence-content {
-      padding: 0.5rem 0;
+      padding: 1rem 0;
     }
-
+  
     .member-info {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      background: #f8f9fa;
-      border-radius: 4px;
+      gap: 1rem;
+      padding: 0.5rem 0.75rem;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
     }
-
+  
+    .member-info:hover {
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
     .member-avatar {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       object-fit: cover;
     }
-
+  
     .member-name {
-      font-weight: 500;
-      color: #2c3e50;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #2d3748;
     }
-
+  
     .reason {
-      color: #666;
-      font-size: 0.875rem;
+      color: #4a5568;
+      font-size: 0.9rem;
       font-style: italic;
-      margin: 0;
+      margin: 0.5rem 0 0;
+    }
+  
+    app-item-card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+  
+    app-item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
     }
   `]
+  
 })
 export class AbsenceListComponent implements OnInit {
   @Input() absences: Absence[] = [];
