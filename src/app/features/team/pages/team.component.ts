@@ -244,6 +244,10 @@ import { TeamMember } from '../models/team-member.model';
       background: #e67e22;
     }
 
+    .role-badge.tester {
+      background:rgb(68, 57, 190);
+    }
+
     .department, .email, .phone {
       font-size: 0.9rem;
       color: #7f8c8d;

@@ -117,6 +117,11 @@ import { User } from '../../../../core/models/user.model';
       color: #ff9800;
     }
 
+    .role-badge.tester {
+      background:rgb(68, 57, 190);
+      color: #ff9800;
+    }
+
     .actions {
       display: flex;
       gap: 0.5rem;
